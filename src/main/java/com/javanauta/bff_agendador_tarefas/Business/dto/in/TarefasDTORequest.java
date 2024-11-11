@@ -1,7 +1,6 @@
 package com.javanauta.bff_agendador_tarefas.Business.dto.in;
 
 
-import com.javanauta.bff_agendador_tarefas.Business.enums.StatusNotificacaoEnum;
 import lombok.*;
 
 import java.time.LocalDateTime;

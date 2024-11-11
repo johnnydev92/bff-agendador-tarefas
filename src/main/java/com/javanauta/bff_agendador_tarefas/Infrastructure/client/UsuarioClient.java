@@ -2,7 +2,7 @@ package com.javanauta.bff_agendador_tarefas.Infrastructure.client;
 
 
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.EnderecoDTORequest;
-import com.javanauta.bff_agendador_tarefas.Business.dto.in.LoginRequestDTO;
+import com.javanauta.bff_agendador_tarefas.Business.dto.in.LoginDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.TelefoneDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.UsuarioDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.out.EnderecoDTOResponse;
@@ -24,7 +24,7 @@ public interface UsuarioClient {
 
 
     @PostMapping("/login")
-    String login (@RequestBody LoginRequestDTO usuarioDTO);
+    String login (@RequestBody LoginDTORequest usuarioDTO);
 
 
     @DeleteMapping("/{email}")

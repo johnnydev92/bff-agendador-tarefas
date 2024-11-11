@@ -3,7 +3,7 @@ package com.javanauta.bff_agendador_tarefas.Controller;
 
 import com.javanauta.bff_agendador_tarefas.Business.UsuarioService;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.EnderecoDTORequest;
-import com.javanauta.bff_agendador_tarefas.Business.dto.in.LoginRequestDTO;
+import com.javanauta.bff_agendador_tarefas.Business.dto.in.LoginDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.TelefoneDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.UsuarioDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.out.EnderecoDTOResponse;
@@ -40,7 +40,7 @@ public class UsuarioController {
     @ApiResponse(responseCode = "200", description = "Usuario logado com sucesso")
     @ApiResponse(responseCode = "401", description = "Credenciais invalidas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public String login (@RequestBody LoginRequestDTO usuarioDTO){
+    public String login (@RequestBody LoginDTORequest usuarioDTO){
 
         return usuarioService.loginUsuario(usuarioDTO);
     }

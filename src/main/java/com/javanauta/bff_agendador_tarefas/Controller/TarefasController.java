@@ -52,7 +52,7 @@ public class TarefasController {
     }
 
     @GetMapping
-    @Operation(summary = "Buscalista de tarrefas por email de usuario",
+    @Operation(summary = "Buscalista de tarefas por email de usuario",
             description = "Busca tarefas cadastradas por usuario")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas com sucesso")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
