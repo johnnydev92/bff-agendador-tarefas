@@ -2,7 +2,7 @@ package com.javanauta.bff_agendador_tarefas.Business;
 
 
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.EnderecoDTORequest;
-import com.javanauta.bff_agendador_tarefas.Business.dto.in.LoginRequestDTO;
+import com.javanauta.bff_agendador_tarefas.Business.dto.in.LoginDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.TelefoneDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.in.UsuarioDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.out.EnderecoDTOResponse;
@@ -23,7 +23,7 @@ public class UsuarioService {
         return client.salvaUsuario(usuarioDTO);
     }
 
-    public String loginUsuario(LoginRequestDTO dto){
+    public String loginUsuario(LoginDTORequest dto){
 
         return client.login(dto);
     }

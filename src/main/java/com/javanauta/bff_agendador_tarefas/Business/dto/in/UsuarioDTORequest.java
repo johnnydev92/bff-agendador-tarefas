@@ -2,7 +2,6 @@ package com.javanauta.bff_agendador_tarefas.Business.dto.in;
 
 
 import lombok.*;
-
 import java.util.List;
 
 @Getter
