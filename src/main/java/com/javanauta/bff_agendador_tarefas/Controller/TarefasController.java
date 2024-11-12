@@ -41,6 +41,7 @@ public class TarefasController {
     @GetMapping("/eventos")
     @Operation(summary = "Busca tarefas por periodo", description = "Busca tarefas cadastradas por periodo")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas com sucesso")
+    @ApiResponse(responseCode = "401", description = "Usuário não altorizado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<List<TarefasDTOResponse>> buscaListaDeTarefasPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial,
@@ -55,6 +56,8 @@ public class TarefasController {
     @Operation(summary = "Buscalista de tarefas por email de usuario",
             description = "Busca tarefas cadastradas por usuario")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas com sucesso")
+    @ApiResponse(responseCode = "401", description = "Usuário não altorizado")
+    @ApiResponse(responseCode = "403", description = "Email não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<List<TarefasDTOResponse>> buscaTarefasPorEmail(
             @RequestHeader(name = "Authorization", required = false) String token){
@@ -66,6 +69,8 @@ public class TarefasController {
     @DeleteMapping
     @Operation(summary = "Deleta tarefas por ID", description = "Deleta tarefas cadastradas pro ID")
     @ApiResponse(responseCode = "200", description = "Tarefas deletadas com sucesso")
+    @ApiResponse(responseCode = "401", description = "Usuário não altorizado")
+    @ApiResponse(responseCode = "403", description = "Tarefa id não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<Void> deletaTarefaPorId(@RequestParam("id") String id,
                                                   @RequestHeader(name = "Authorization", required = false) String token){
@@ -79,6 +84,8 @@ public class TarefasController {
     @Operation(summary = "Altera status de tarefas",
             description = "Altera status de tarefas cadastradas")
     @ApiResponse(responseCode = "200", description = "Status da Tarefa alterado com sucesso")
+    @ApiResponse(responseCode = "401", description = "Usuário não altorizado")
+    @ApiResponse(responseCode = "403", description = "Tarefa id não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<TarefasDTOResponse> alteraStatusNotificacao(
             @RequestParam("Status") StatusNotificacaoEnum status,
@@ -92,6 +99,8 @@ public class TarefasController {
     @Operation(summary = "Altera dados de tarefas",
             description = "Altera dados de tarefas cadastradas")
     @ApiResponse(responseCode = "200", description = "Tarefas alteradas com sucesso")
+    @ApiResponse(responseCode = "401", description = "Usuário não altorizado")
+    @ApiResponse(responseCode = "403", description = "Tarefa id não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<TarefasDTOResponse> updateTarefas(@RequestBody TarefasDTORequest dto,
                                                             @RequestParam("id") String id,
