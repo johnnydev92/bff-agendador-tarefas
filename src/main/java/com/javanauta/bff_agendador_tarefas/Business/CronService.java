@@ -28,7 +28,7 @@ public class CronService {
     private String senha;
 
     @Scheduled(cron = "${cron.horario}")
-    public void BuscaTarefasProximaHora(){
+    public void BuscaTarefasImediatas(){
 
         String token = login(coverterParaRequestDTO());
         log.info("Iniciada a busca de tarefas");
@@ -44,7 +44,7 @@ public class CronService {
             emailService.enviaEmail(tarefa);
             log.info("Email enviado para o usuario " + tarefa.getEmailUsuario());
             tarefasService.alteraStatus(StatusNotificacaoEnum.NOTIFICADO, tarefa.getId(),
-            token);});
+                    token);});
 
         log.info("Finalizada a busca e notificacao de tarefas");
     }

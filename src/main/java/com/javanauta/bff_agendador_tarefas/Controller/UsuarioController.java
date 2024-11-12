@@ -9,8 +9,10 @@ import com.javanauta.bff_agendador_tarefas.Business.dto.in.UsuarioDTORequest;
 import com.javanauta.bff_agendador_tarefas.Business.dto.out.EnderecoDTOResponse;
 import com.javanauta.bff_agendador_tarefas.Business.dto.out.TelefoneDTOResponse;
 import com.javanauta.bff_agendador_tarefas.Business.dto.out.UsuarioDTOResponse;
+import com.javanauta.bff_agendador_tarefas.Infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
 @Tag(name = "usuario", description = "Cadastro e login de usuarios")
+@SecurityRequirement(name = SecurityConfig.SECURITY_SCHEME)
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -47,9 +50,9 @@ public class UsuarioController {
 
     @GetMapping
     @Operation(summary = "Buscar dados de usuarios por Email",
-            description = "Cria um novo usuario")
+            description = "Busca dados de um usuario existente por Email")
     @ApiResponse(responseCode = "200", description = "Usuario salvo com sucesso")
-    @ApiResponse(responseCode = "404", description = "Usuario nao cadastrado")
+    @ApiResponse(responseCode = "404", description = "Usuario nao encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<UsuarioDTOResponse> buscaUsuarioPorEmail(@RequestParam("email") String email,
                                                                    @RequestHeader(name = "Authorization", required = false) String token){
